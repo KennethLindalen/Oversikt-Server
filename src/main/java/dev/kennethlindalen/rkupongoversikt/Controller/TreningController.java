@@ -1,12 +1,11 @@
 package dev.kennethlindalen.rkupongoversikt.Controller;
 
 import com.google.gson.Gson;
+import dev.kennethlindalen.rkupongoversikt.Controller.Models.TreningDTO;
 import dev.kennethlindalen.rkupongoversikt.Service.TreningService;
-import dev.kennethlindalen.rkupongoversikt.model.Trening;
+import dev.kennethlindalen.rkupongoversikt.Models.Trening;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TreningController {
@@ -21,20 +20,23 @@ public class TreningController {
         return gson.toJson(treningService.getAll());
     }
 
-    @RequestMapping("/create")
-    public String create(@RequestParam String dato, @RequestParam String stil,
-                         @RequestParam String tid, @RequestParam Boolean fullfort,
-                         @RequestParam Boolean planlagt){
-        Trening trening = treningService.create(dato, stil, tid, fullfort, planlagt);
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String create(@RequestBody TreningDTO t){
+        Trening trening = treningService.create(
+                t.getDato(), t.getStil(),
+                t.getTid(), t.getFullfort(),
+                t.getPlanlagt());
 
         return gson.toJson(trening);
     }
 
-    @RequestMapping("/update")
-    public String update(@RequestParam String id,@RequestParam String dato, @RequestParam String stil,
-                         @RequestParam String tid, @RequestParam Boolean fullfort,
-                         @RequestParam Boolean planlagt){
-        Trening trening = treningService.update(id,dato, stil, tid, fullfort, planlagt);
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@RequestBody TreningDTO t){
+        Trening trening = treningService.update(
+                t.getId(), t.getDato(),
+                t.getStil(), t.getTid(),
+                t.getFullfort(), t.getPlanlagt()
+        );
 
         return gson.toJson(trening);
     }
@@ -43,7 +45,7 @@ public class TreningController {
     public String delete(@RequestParam String id){
         treningService.delete(id);
 
-        return gson.toJson("Deleted trening with id:" + id);
+        return gson.toJson(String.format("Trening med id: %s er slettet.", id));
     }
 
 }

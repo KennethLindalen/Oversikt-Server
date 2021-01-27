@@ -1,7 +1,7 @@
 package dev.kennethlindalen.rkupongoversikt.Service;
 
 import dev.kennethlindalen.rkupongoversikt.Repository.TreningRepository;
-import dev.kennethlindalen.rkupongoversikt.model.Trening;
+import dev.kennethlindalen.rkupongoversikt.Models.Trening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +23,7 @@ public class TreningService {
     }
 
     public Trening update(String id, String dato, String stil, String tid, Boolean fullfort, Boolean planlagt){
-        Optional<Trening> optionalTrening = treningRepository.findById(id);
-        Trening trening = optionalTrening.get();
+        Trening trening = treningRepository.findById(id).get();
         trening.setDato(dato);
         trening.setStil(stil);
         trening.setTid(tid);
@@ -35,8 +34,7 @@ public class TreningService {
     }
 
     public void delete(String id){
-        Optional<Trening> optionalTrening = treningRepository.findById(id);
-        Trening trening = optionalTrening.get();
+        Trening trening = treningRepository.findById(id).get();
         treningRepository.delete(trening);
     }
 

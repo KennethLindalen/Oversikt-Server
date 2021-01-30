@@ -2,8 +2,8 @@ package dev.kennethlindalen.rkupongoversikt.Controller;
 
 import com.google.gson.Gson;
 import dev.kennethlindalen.rkupongoversikt.Controller.Models.DTO.TreningDTO;
+import dev.kennethlindalen.rkupongoversikt.Models.TreningDocumentModel;
 import dev.kennethlindalen.rkupongoversikt.Service.TreningService;
-import dev.kennethlindalen.rkupongoversikt.Models.Trening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,23 +22,23 @@ public class TreningController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@RequestBody TreningDTO t){
-        Trening trening = treningService.create(
+        TreningDocumentModel treningDocumentModel = treningService.create(
                 t.getDato(), t.getStil(),
                 t.getTid(), t.getFullfort(),
                 t.getPlanlagt());
 
-        return gson.toJson(trening);
+        return gson.toJson(treningDocumentModel);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@RequestBody TreningDTO t){
-        Trening trening = treningService.update(
+        TreningDocumentModel treningDocumentModel = treningService.update(
                 t.getId(), t.getDato(),
                 t.getStil(), t.getTid(),
                 t.getFullfort(), t.getPlanlagt()
         );
 
-        return gson.toJson(trening);
+        return gson.toJson(treningDocumentModel);
     }
 
     @RequestMapping("/delete")

@@ -1,4 +1,4 @@
-package dev.kennethlindalen.rkupongoversikt.Config;
+package dev.kennethlindalen.rkupongoversikt.Controller.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;

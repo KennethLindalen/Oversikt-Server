@@ -1,7 +1,7 @@
 package dev.kennethlindalen.rkupongoversikt.Controller;
 
 import com.google.gson.Gson;
-import dev.kennethlindalen.rkupongoversikt.Controller.Models.TreningDTO;
+import dev.kennethlindalen.rkupongoversikt.Controller.Models.DTO.TreningDTO;
 import dev.kennethlindalen.rkupongoversikt.Service.TreningService;
 import dev.kennethlindalen.rkupongoversikt.Models.Trening;
 import org.springframework.beans.factory.annotation.Autowired;

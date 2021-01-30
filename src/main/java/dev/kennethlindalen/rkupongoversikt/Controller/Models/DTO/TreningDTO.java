@@ -1,4 +1,4 @@
-package dev.kennethlindalen.rkupongoversikt.Controller.Models;
+package dev.kennethlindalen.rkupongoversikt.Controller.Models.DTO;
 
 public class TreningDTO {
 

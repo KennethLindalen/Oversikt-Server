@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class TreningDocumentModel {
+public class Trening {
 
     @Id
     String id;
@@ -15,7 +15,7 @@ public class TreningDocumentModel {
     Boolean planlagt;
 
 
-    public TreningDocumentModel(String dato, String stil, String tid, Boolean fullfort, Boolean planlagt) {
+    public Trening(String dato, String stil, String tid, Boolean fullfort, Boolean planlagt) {
         this.dato = dato;
         this.stil = stil;
         this.tid = tid;

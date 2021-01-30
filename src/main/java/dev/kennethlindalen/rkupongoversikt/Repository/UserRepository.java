@@ -1,10 +1,10 @@
 package dev.kennethlindalen.rkupongoversikt.Repository;
 
-import dev.kennethlindalen.rkupongoversikt.Models.UserDocumentModel;
+import dev.kennethlindalen.rkupongoversikt.Models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<UserDocumentModel, String> {
+public interface UserRepository extends MongoRepository<User, String> {
 
-    public UserDocumentModel findUserByUsername(String Username);
-    public UserDocumentModel findPasswordByUsername(String Username);
+    public User findUserByUsername(String Username);
+    public User findPasswordByUsername(String Username);
 }

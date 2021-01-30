@@ -4,7 +4,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +13,6 @@ import java.util.Map;
 import static dev.kennethlindalen.rkupongoversikt.Security.JWT.Utils.JWTContstants.TOKEN_VALIDITY;
 import static dev.kennethlindalen.rkupongoversikt.Security.JWT.Utils.JWTContstants.JWT_SECRET;
 
-@Component
 public class JWTTokenManager implements Serializable {
 
     public static final long serialVersionUID = 7008375124389347049L;

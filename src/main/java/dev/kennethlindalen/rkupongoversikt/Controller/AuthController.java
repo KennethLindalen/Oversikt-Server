@@ -1,5 +1,7 @@
 package dev.kennethlindalen.rkupongoversikt.Controller;
 
+import dev.kennethlindalen.rkupongoversikt.Controller.Models.DTO.UserDTO;
+import dev.kennethlindalen.rkupongoversikt.Models.UserDocumentModel;
 import dev.kennethlindalen.rkupongoversikt.Security.JWT.Models.JWTRequest;
 import dev.kennethlindalen.rkupongoversikt.Security.JWT.Models.JWTResponse;
 import dev.kennethlindalen.rkupongoversikt.Security.JWT.Utils.JWTTokenManager;
@@ -40,6 +42,13 @@ public class AuthController {
         final String JWTToken = jwtTokenManager.generateToken(userDetails);
 
         return ResponseEntity.ok(new JWTResponse(JWTToken));
+    }
+
+    @PostMapping(value = "/signup")
+    public ResponseEntity<String> signup(@RequestBody UserDTO userDTO){
+        UserDocumentModel userDocumentModel = userService.createUser(userDTO.getUsername(), userDTO.getPassword());
+
+        return ResponseEntity.ok(String.format("User with username: %s has been created", userDTO.getUsername()));
     }
 
 }

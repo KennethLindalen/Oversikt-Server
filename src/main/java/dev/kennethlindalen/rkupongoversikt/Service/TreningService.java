@@ -1,7 +1,7 @@
 package dev.kennethlindalen.rkupongoversikt.Service;
 
+import dev.kennethlindalen.rkupongoversikt.Models.TreningDocumentModel;
 import dev.kennethlindalen.rkupongoversikt.Repository.TreningRepository;
-import dev.kennethlindalen.rkupongoversikt.Models.Trening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,28 +13,28 @@ public class TreningService {
     @Autowired
     private TreningRepository treningRepository;
 
-    public Trening create(String dato,String stil, String tid, Boolean fullfort, Boolean planlagt){
-        return treningRepository.save(new Trening(dato, stil, tid, fullfort, planlagt));
+    public TreningDocumentModel create(String dato, String stil, String tid, Boolean fullfort, Boolean planlagt){
+        return treningRepository.save(new TreningDocumentModel(dato, stil, tid, fullfort, planlagt));
     }
 
-    public List<Trening> getAll(){
+    public List<TreningDocumentModel> getAll(){
         return treningRepository.findAll();
     }
 
-    public Trening update(String id, String dato, String stil, String tid, Boolean fullfort, Boolean planlagt){
-        Trening trening = treningRepository.findById(id).get();
-        trening.setDato(dato);
-        trening.setStil(stil);
-        trening.setTid(tid);
-        trening.setFullfort(fullfort);
-        trening.setPlanlagt(planlagt);
+    public TreningDocumentModel update(String id, String dato, String stil, String tid, Boolean fullfort, Boolean planlagt){
+        TreningDocumentModel treningDocumentModel = treningRepository.findById(id).get();
+        treningDocumentModel.setDato(dato);
+        treningDocumentModel.setStil(stil);
+        treningDocumentModel.setTid(tid);
+        treningDocumentModel.setFullfort(fullfort);
+        treningDocumentModel.setPlanlagt(planlagt);
 
-        return treningRepository.save(trening);
+        return treningRepository.save(treningDocumentModel);
     }
 
     public void delete(String id){
-        Trening trening = treningRepository.findById(id).get();
-        treningRepository.delete(trening);
+        TreningDocumentModel treningDocumentModel = treningRepository.findById(id).get();
+        treningRepository.delete(treningDocumentModel);
     }
 
 }

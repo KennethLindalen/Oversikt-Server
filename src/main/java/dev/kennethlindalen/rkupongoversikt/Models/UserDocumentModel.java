@@ -10,10 +10,20 @@ public class UserDocumentModel {
     private String id;
     private String username;
     private String password;
+    private boolean isActive;
 
-    public UserDocumentModel(String username, String password) {
+    public UserDocumentModel(String username, String password, boolean isActive) {
         this.username = username;
         this.password = password;
+        this.isActive = isActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 
     public String getId() {

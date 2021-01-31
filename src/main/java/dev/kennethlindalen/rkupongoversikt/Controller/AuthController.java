@@ -46,7 +46,7 @@ public class AuthController {
 
     @PostMapping(value = "/signup")
     public ResponseEntity<String> signup(@RequestBody UserDTO userDTO){
-        UserDocumentModel userDocumentModel = userService.createUser(userDTO.getUsername(), userDTO.getPassword());
+        UserDocumentModel userDocumentModel = userService.createUser(userDTO.getUsername(), userDTO.getPassword(), userDTO.isActive());
 
         return ResponseEntity.ok(String.format("User with username: %s has been created", userDTO.getUsername()));
     }

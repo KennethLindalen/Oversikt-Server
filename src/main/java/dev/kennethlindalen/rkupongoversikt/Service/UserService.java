@@ -28,9 +28,9 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public UserDocumentModel createUser(String username, String password){
+    public UserDocumentModel createUser(String username, String password, boolean isActive){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        UserDocumentModel user = new UserDocumentModel(username, passwordEncoder.encode(password));
+        UserDocumentModel user = new UserDocumentModel(username, passwordEncoder.encode(password), isActive);
 
         userRepository.save(user);
 

@@ -1,4 +1,4 @@
-package dev.kennethlindalen.rkupongoversikt.Security.JWT.Utils;
+package dev.kennethlindalen.rkupongoversikt.Security.JWT;
 
 import org.springframework.beans.factory.annotation.Value;
 

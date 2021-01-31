@@ -20,19 +20,16 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         if(username.equals(userRepository.findUserByUsername(username).getUsername())){
-            return new User(username, userRepository.findPasswordByUsername(username).getPassword(), new ArrayList<>());
+            return new User(username, userRepository.findUserByUsername(username).getPassword(), new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found: " + username);
         }
     }
 
-    public UserDocumentModel createUser(String username, String password, boolean isActive){
+    public void createUser(String username, String password, boolean isActive){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        UserDocumentModel user = new UserDocumentModel(username, passwordEncoder.encode(password), isActive);
-
-        userRepository.save(user);
-
-        return user;
+        userRepository.save( new UserDocumentModel(username, passwordEncoder.encode(password), isActive));
     }
 }

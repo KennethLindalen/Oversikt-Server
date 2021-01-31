@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static dev.kennethlindalen.rkupongoversikt.Security.JWT.JWTContstants.TOKEN_VALIDITY;
 import static dev.kennethlindalen.rkupongoversikt.Security.JWT.JWTContstants.JWT_SECRET;
+import static dev.kennethlindalen.rkupongoversikt.Security.JWT.JWTContstants.TOKEN_VALIDITY;
 
 @Component
 public class JWTTokenManager implements Serializable {
